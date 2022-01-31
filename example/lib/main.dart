@@ -42,6 +42,12 @@ class _StartScreenState extends State<StartScreen> {
     });
   }
 
+  void resetCounter() {
+    setState(() {
+      _count = 0;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,11 +70,16 @@ class _StartScreenState extends State<StartScreen> {
             icon: const Icon(Icons.add),
             tooltip: "add 1 to the counter",
           ),
-/*           IconButton(
+          IconButton(
             onPressed: decrementCount,
             icon: const Icon(Icons.remove),
             tooltip: "remove 1 from the counter",
-          ), */
+          ),
+          IconButton(
+            onPressed: resetCounter,
+            icon: const Icon(Icons.restore),
+            tooltip: "reset the counter",
+          ),
         ],
       ),
     );

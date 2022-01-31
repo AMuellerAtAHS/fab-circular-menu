@@ -94,18 +94,18 @@ class FabCircularMenuState extends State<FabCircularMenu>
         curve: Interval(0.0, 0.4, curve: widget.animationCurve));
     _scaleAnimation = Tween<double>(begin: 0.0, end: 1.0)
         .animate(_scaleCurve as Animation<double>)
-          ..addListener(() {
-            setState(() {});
-          });
+      ..addListener(() {
+        setState(() {});
+      });
 
     _rotateCurve = CurvedAnimation(
         parent: _animationController,
         curve: Interval(0.4, 1.0, curve: widget.animationCurve));
     _rotateAnimation = Tween<double>(begin: 0.5, end: 1.0)
         .animate(_rotateCurve as Animation<double>)
-          ..addListener(() {
-            setState(() {});
-          });
+      ..addListener(() {
+        setState(() {});
+      });
   }
 
   @override
@@ -217,8 +217,14 @@ class FabCircularMenuState extends State<FabCircularMenu>
       angleFix = -45.0 * _directionX.abs();
     }
 
-    final angle =
-        vector.radians(90.0 / (widget.children.length - 1) * index + angleFix);
+    final angle = vector.radians(
+      90.0 /
+              (widget.children.length == 1
+                  ? widget.children.length
+                  : widget.children.length - 1) *
+              index +
+          angleFix,
+    );
 
     return Transform(
         transform: Matrix4.translationValues(
@@ -266,9 +272,9 @@ class FabCircularMenuState extends State<FabCircularMenu>
           ));
       _colorAnimation = ColorTween(begin: _fabCloseColor, end: _fabOpenColor)
           .animate(_colorCurve as Animation<double>)
-            ..addListener(() {
-              setState(() {});
-            });
+        ..addListener(() {
+          setState(() {});
+        });
     }
   }
 
